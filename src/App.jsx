@@ -3,7 +3,7 @@ function App() {
 
   return (
     <div className="App">
-      login form
+      سلام به همگی
     </div>
   )
 }
