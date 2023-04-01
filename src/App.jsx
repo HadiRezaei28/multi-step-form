@@ -1,11 +1,11 @@
+import MainForm from "./components/MainForm";
 
 function App() {
-
   return (
-    <div className="App">
-      سلام به همگی
+    <div style={{background: "hsl(217, 100%, 97%)"}}>
+      <MainForm />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
