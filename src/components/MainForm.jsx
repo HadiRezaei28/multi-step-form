@@ -20,23 +20,13 @@ import SelectPlan from "./SelectPlan";
 import Summary from "./Summary";
 import AddOns from "./AddOns";
 import Thank from "./Thank";
+import { useFormik } from "formik";
+
+// functions
+import { PersonalInfoSchema } from "./validations/validationForm";
 
 const steps = ["اطلاعات شخصی", "انتخاب طرح", "افزونه ها", "مرحله نهایی"];
 
-const stepContent = (step) => {
-  switch (step) {
-    case 0:
-      return <PersonalInfo />;
-    case 1:
-      return <SelectPlan />;
-    case 2:
-      return <AddOns />;
-    case 3:
-      return <Summary />;
-    default:
-      return <div>Not Found</div>;
-  }
-};
 
 const MainForm = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -49,6 +39,32 @@ const MainForm = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  const formik1 = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      phone: "",
+    },
+    validationSchema: PersonalInfoSchema,
+    onSubmit: () => {
+      handleNext();
+    },
+  });
+
+
+  const stepContent = (step) => {
+    switch (step) {
+      case 0:
+        return formik1.handleSubmit;
+      case 1:
+        return;
+      case 2:
+        return;
+      case 3:
+        return;
+    }
+  };
+
   return (
     <Container
       maxWidth="lg"
@@ -58,6 +74,7 @@ const MainForm = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        background: "transparent",
       }}
     >
       <Box
@@ -111,70 +128,82 @@ const MainForm = () => {
             ))}
           </Stepper>
         </Box>
-        <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          sx={{ width: "calc(100% - 250px)", height: "100%" }}
-        >
-          <Box sx={{ width: "80%", height: "90%" }}>
-            {activeStep === steps.length ? <Thank /> : stepContent(activeStep)}
-          </Box>
-          {activeStep < steps.length && (
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              sx={{ width: "80%", height: "10%" }}
-            >
-              {activeStep === steps.length - 1 ? (
-                <Button
-                  variant="contained"
-                  onClick={handleNext}
-                  sx={{
-                    backgroundColor: "hsl(213, 96%, 18%)",
-                    color: "white",
-                    "&:hover": {
-                      backgroundColor: "hsl(200, 86%, 28%)",
-                    },
-                  }}
-                >
-                  تایید
-                </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  onClick={handleNext}
-                  sx={{
-                    backgroundColor: "hsl(213, 96%, 18%)",
-                    color: "white",
-                    "&:hover": {
-                      backgroundColor: "hsl(200, 86%, 28%)",
-                    },
-                  }}
-                >
-                  مرحله بعد
-                </Button>
-              )}
-
-              {activeStep !== 0 && (
-                <Button
-                  variant="contained"
-                  onClick={handleBack}
-                  sx={{
-                    backgroundColor: "hsl(213, 96%, 18%)",
-                    color: "white",
-                    "&:hover": {
-                      backgroundColor: "hsl(200, 86%, 28%)",
-                    },
-                  }}
-                >
-                  مرحله قبل
-                </Button>
-              )}
+        <Box sx={{ width: "calc(100% - 250px)", height: "100%" }}>
+          <form
+            onSubmit={stepContent(activeStep)}
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Box pt={5} sx={{ width: "80%", height: "90%" }}>
+              {/* {activeStep === steps.length ? <Thank /> : stepContent(activeStep)} */}
+              {activeStep === 0 && <PersonalInfo formik1={formik1} />}
+              {activeStep === 1 && <SelectPlan />}
+              {activeStep === 2 && <AddOns />}
+              {activeStep === 3 && <Summary />}
+              {activeStep === 4 && <Thank />}
             </Box>
-          )}
+            {activeStep < steps.length && (
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
+                sx={{ width: "80%", height: "10%" }}
+              >
+                {activeStep === steps.length - 1 ? (
+                  <Button
+                    variant="contained"
+                    onClick={handleNext}
+                    type="submit"
+                    sx={{
+                      backgroundColor: "hsl(213, 96%, 18%)",
+                      color: "white",
+                      "&:hover": {
+                        backgroundColor: "hsl(200, 86%, 28%)",
+                      },
+                    }}
+                  >
+                    تایید
+                  </Button>
+                ) : (
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    sx={{
+                      backgroundColor: "hsl(213, 96%, 18%)",
+                      color: "white",
+                      "&:hover": {
+                        backgroundColor: "hsl(200, 86%, 28%)",
+                      },
+                    }}
+                  >
+                    مرحله بعد
+                  </Button>
+                )}
+
+                {activeStep !== 0 && (
+                  <Button
+                    variant="contained"
+                    onClick={handleBack}
+                    sx={{
+                      backgroundColor: "hsl(213, 96%, 18%)",
+                      color: "white",
+                      "&:hover": {
+                        backgroundColor: "hsl(200, 86%, 28%)",
+                      },
+                    }}
+                  >
+                    مرحله قبل
+                  </Button>
+                )}
+              </Box>
+            )}
+          </form>
         </Box>
       </Box>
     </Container>
