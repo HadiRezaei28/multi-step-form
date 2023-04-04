@@ -15,21 +15,24 @@ import {
 import background from "../assets/images/background.jpg";
 
 //components
-import PersonalInfo from "./PersonalInfo";
-import SelectPlan from "./SelectPlan";
-import Summary from "./Summary";
-import AddOns from "./AddOns";
-import Thank from "./Thank";
+import PersonalInfo from "./Forms/PersonalInfo";
+import SelectPlan from "./Forms/SelectPlan";
+import Summary from "./Forms/Summary";
+import AddOns from "./Forms/AddOns";
+import Thank from "./Forms/Thank";
 import { useFormik } from "formik";
 
 // functions
-import { PersonalInfoSchema } from "./validations/validationForm";
+import {
+  PersonalInfoSchema,
+  SelectPlanSchema,
+} from "./validations/validationForm";
 
 const steps = ["اطلاعات شخصی", "انتخاب طرح", "افزونه ها", "مرحله نهایی"];
 
-
 const MainForm = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
+  const [time, setTime] = useState(false);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -51,13 +54,22 @@ const MainForm = () => {
     },
   });
 
+  const formik2 = useFormik({
+    initialValues: {
+      radioValue: "",
+    },
+    validationSchema: SelectPlanSchema,
+    onSubmit: () => {
+      handleNext();
+    },
+  });
 
   const stepContent = (step) => {
     switch (step) {
       case 0:
         return formik1.handleSubmit;
       case 1:
-        return;
+        return formik2.handleSubmit;
       case 2:
         return;
       case 3:
@@ -80,11 +92,11 @@ const MainForm = () => {
       <Box
         display="flex"
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent="center"
         // mx="auto"
         sx={{
-          height: "568px",
-          width: "100%",
+          height: "500px",
+          width: "70%",
           background: "hsl(0, 0%, 100%)",
           borderRadius: "20px",
           padding: "15px",
@@ -93,7 +105,7 @@ const MainForm = () => {
         <Box
           sx={{
             width: "250px",
-            height: "568px",
+            height: "500px",
             backgroundImage: `url(${background})`,
             borderRadius: "20px",
           }}
@@ -128,7 +140,7 @@ const MainForm = () => {
             ))}
           </Stepper>
         </Box>
-        <Box sx={{ width: "calc(100% - 250px)", height: "100%" }}>
+        <Box sx={{ width: "700px", height: "100%" }}>
           <form
             onSubmit={stepContent(activeStep)}
             style={{
@@ -143,7 +155,7 @@ const MainForm = () => {
             <Box pt={5} sx={{ width: "80%", height: "90%" }}>
               {/* {activeStep === steps.length ? <Thank /> : stepContent(activeStep)} */}
               {activeStep === 0 && <PersonalInfo formik1={formik1} />}
-              {activeStep === 1 && <SelectPlan />}
+              {activeStep === 1 && <SelectPlan time={time} setTime={setTime} formik2={formik2} />}
               {activeStep === 2 && <AddOns />}
               {activeStep === 3 && <Summary />}
               {activeStep === 4 && <Thank />}
