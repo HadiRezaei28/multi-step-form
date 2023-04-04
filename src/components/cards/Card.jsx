@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar, Box, Typography } from "@mui/material";
 import GamesRoundedIcon from "@mui/icons-material/GamesRounded";
 
-const Card1 = ({ card }) => {
+const Card1 = ({ card, time }) => {
   const { avatar, level, price, color } = card;
 
   return (
@@ -10,7 +10,7 @@ const Card1 = ({ card }) => {
       py={2}
       pr={5}
       pl={2}
-      sx={{width: "80px",border: "1px solid silver", borderRadius: "8px" }}
+      sx={{width: "85px",border: "1px solid silver", borderRadius: "8px" }}
     >
       <Avatar alt="acrade" sx={{ bgcolor: color, marginBottom: 5 }}>
         {avatar}
@@ -19,7 +19,7 @@ const Card1 = ({ card }) => {
         {level}
       </Typography>
       <Typography variant="body2" sx={{color: "hsl(229, 24%, 50%)"}}>
-        {price} تومان/ماه
+        {price} {time ? "تومان/سال" : "تومان/ماه"}
       </Typography>
       {card.off && (
         <Typography variant="body2" fontWeight={500} sx={{color: "hsl(213, 96%, 18%)"}}>

@@ -172,7 +172,7 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
                       formik2.setFieldValue("radioValue", `${card.value}`)
                     }
                     control={<BpRadio />}
-                    label={<Card card={card} />}
+                    label={<Card card={card} time={time} />}
                     labelPlacement="top"
                     sx={{ margin: "0 0 0 0" }}
                   />
@@ -185,7 +185,7 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
                       formik2.setFieldValue("radioValue", `${card.value}`)
                     }
                     control={<BpRadio />}
-                    label={<Card card={card} />}
+                    label={<Card card={card} time={time} />}
                     labelPlacement="top"
                     sx={{ margin: "0 0 0 0" }}
                   />

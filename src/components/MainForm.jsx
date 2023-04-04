@@ -33,6 +33,7 @@ const steps = ["اطلاعات شخصی", "انتخاب طرح", "افزونه �
 const MainForm = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [time, setTime] = useState(false);
+  console.log(time)
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
