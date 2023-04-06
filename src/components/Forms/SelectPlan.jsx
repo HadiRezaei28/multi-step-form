@@ -1,7 +1,7 @@
 import React from "react";
 
 // component
-import Card from "../cards/Card";
+import SelectPlanCard from "../cards/SelectPlanCard";
 
 //mui component
 import {
@@ -14,13 +14,13 @@ import {
   Switch,
   Typography,
 } from "@mui/material";
-
 import { styled } from "@mui/material/styles";
 
-// material icons
-import GamesRoundedIcon from "@mui/icons-material/GamesRounded";
-import VideogameAssetIcon from "@mui/icons-material/VideogameAsset";
-import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+// data
+
+import { cardsMonthly, cardsYearly } from "../data/data";
+
+
 
 const BpIcon = styled("span")(({ theme }) => ({
   width: 100,
@@ -88,56 +88,6 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const SelectPlan = ({ time, setTime, formik2 }) => {
-  const cardsMonthly = [
-    {
-      avatar: <GamesRoundedIcon />,
-      value: "Arcade",
-      level: "معمولی",
-      price: "5",
-      color: "orange",
-    },
-    {
-      avatar: <VideogameAssetIcon />,
-      value: "Acvanced",
-      level: "پیشرفته",
-      price: "10",
-      color: "pink",
-    },
-    {
-      avatar: <SportsEsportsIcon />,
-      value: "Pro",
-      level: "حرفه ایی",
-      price: "15",
-      color: "blue",
-    },
-  ];
-
-  const cardsYearly = [
-    {
-      avatar: <GamesRoundedIcon />,
-      value: "Arcade",
-      level: "معمولی",
-      price: "50",
-      color: "orange",
-      off: "2 ماه رایگان",
-    },
-    {
-      avatar: <VideogameAssetIcon />,
-      value: "Acvanced",
-      level: "پیشرفته",
-      price: "100",
-      color: "pink",
-      off: "2 ماه رایگان",
-    },
-    {
-      avatar: <SportsEsportsIcon />,
-      value: "Pro",
-      level: "حرفه ایی",
-      price: "150",
-      color: "blue",
-      off: "2 ماه رایگان",
-    },
-  ];
 
   return (
     <Box>
@@ -172,7 +122,7 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
                       formik2.setFieldValue("radioValue", `${card.value}`)
                     }
                     control={<BpRadio />}
-                    label={<Card card={card} time={time} />}
+                    label={<SelectPlanCard card={card} time={time} />}
                     labelPlacement="top"
                     sx={{ margin: "0 0 0 0" }}
                   />
@@ -185,7 +135,7 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
                       formik2.setFieldValue("radioValue", `${card.value}`)
                     }
                     control={<BpRadio />}
-                    label={<Card card={card} time={time} />}
+                    label={<SelectPlanCard card={card} time={time} />}
                     labelPlacement="top"
                     sx={{ margin: "0 0 0 0" }}
                   />

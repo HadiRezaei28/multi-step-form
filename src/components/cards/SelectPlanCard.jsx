@@ -1,8 +1,7 @@
 import React from "react";
 import { Avatar, Box, Typography } from "@mui/material";
-import GamesRoundedIcon from "@mui/icons-material/GamesRounded";
 
-const Card1 = ({ card, time }) => {
+const SelectPlanCard = ({ card, time }) => {
   const { avatar, level, price, color } = card;
 
   return (
@@ -30,4 +29,4 @@ const Card1 = ({ card, time }) => {
   );
 };
 
-export default Card1;
+export default SelectPlanCard;

@@ -31,9 +31,8 @@ import {
 const steps = ["اطلاعات شخصی", "انتخاب طرح", "افزونه ها", "مرحله نهایی"];
 
 const MainForm = () => {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(2);
   const [time, setTime] = useState(false);
-  console.log(time)
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -65,6 +64,20 @@ const MainForm = () => {
     },
   });
 
+  const formik3 = useFormik({
+    initialValues: {
+      onlineService: false,
+      largerStorage: true,
+      customizeProfile: false,
+    },
+    onSubmit: () => {
+      handleNext();
+    },
+  });
+
+  console.log(formik3.values)
+
+
   const stepContent = (step) => {
     switch (step) {
       case 0:
@@ -72,7 +85,7 @@ const MainForm = () => {
       case 1:
         return formik2.handleSubmit;
       case 2:
-        return;
+        return formik3.handleSubmit;
       case 3:
         return;
     }
@@ -156,8 +169,12 @@ const MainForm = () => {
             <Box pt={5} sx={{ width: "80%", height: "90%" }}>
               {/* {activeStep === steps.length ? <Thank /> : stepContent(activeStep)} */}
               {activeStep === 0 && <PersonalInfo formik1={formik1} />}
-              {activeStep === 1 && <SelectPlan time={time} setTime={setTime} formik2={formik2} />}
-              {activeStep === 2 && <AddOns />}
+              {activeStep === 1 && (
+                <SelectPlan time={time} setTime={setTime} formik2={formik2} />
+              )}
+              {activeStep === 2 && (
+                <AddOns time={time} formik3={formik3} />
+              )}
               {activeStep === 3 && <Summary />}
               {activeStep === 4 && <Thank />}
             </Box>
