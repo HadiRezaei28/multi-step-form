@@ -32,7 +32,7 @@ import {
 const steps = ["اطلاعات شخصی", "انتخاب طرح", "افزونه ها", "مرحله نهایی"];
 
 const MainForm = () => {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(3);
   const [time, setTime] = useState(false);
 
   const handleNext = () => {
@@ -83,8 +83,6 @@ const MainForm = () => {
         return formik2.handleSubmit;
       case 2:
         return formik3.handleSubmit;
-      case 3:
-        return;
     }
   };
 
