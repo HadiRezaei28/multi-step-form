@@ -113,9 +113,8 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
           >
             {time === true
               ? cardsYearly.map((card, index) => (
-                  <Grid item xs={4} sx={{display:"flex", justifyContent: "center", alignItems: "center"}}>
+                  <Grid item xs={4} key={index} sx={{display:"flex", justifyContent: "center", alignItems: "center"}}>
                     <FormControlLabel
-                      key={index}
                       value={card.value}
                       onChange={() =>
                         formik2.setFieldValue("radioValue", `${card.value}`)
@@ -127,9 +126,8 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
                   </Grid>
                 ))
               : cardsMonthly.map((card, index) => (
-                  <Grid item xs={4} sx={{display:"flex", justifyContent: "center", alignItems: "center"}}>
+                  <Grid item xs={4} key={index} sx={{display:"flex", justifyContent: "center", alignItems: "center"}}>
                     <FormControlLabel
-                      key={index}
                       value={card.value}
                       onChange={() =>
                         formik2.setFieldValue("radioValue", `${card.value}`)

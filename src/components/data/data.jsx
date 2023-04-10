@@ -6,21 +6,21 @@ import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 export const cardsMonthly = [
   {
     avatar: <GamesRoundedIcon />,
-    value: "Arcade",
+    value: "معمولی",
     level: "معمولی",
     price: 5,
     color: "orange",
   },
   {
     avatar: <VideogameAssetIcon />,
-    value: "Acvanced",
+    value: "پیشرفته",
     level: "پیشرفته",
     price: 10,
     color: "pink",
   },
   {
     avatar: <SportsEsportsIcon />,
-    value: "Pro",
+    value: "حرفه ایی",
     level: "حرفه ایی",
     price: 15,
     color: "blue",
@@ -30,7 +30,7 @@ export const cardsMonthly = [
 export const cardsYearly = [
   {
     avatar: <GamesRoundedIcon />,
-    value: "Arcade",
+    value: "معمولی",
     level: "معمولی",
     price: 50,
     color: "orange",
@@ -38,7 +38,7 @@ export const cardsYearly = [
   },
   {
     avatar: <VideogameAssetIcon />,
-    value: "Acvanced",
+    value: "پیشرفته",
     level: "پیشرفته",
     price: 100,
     color: "pink",
@@ -46,7 +46,7 @@ export const cardsYearly = [
   },
   {
     avatar: <SportsEsportsIcon />,
-    value: "Pro",
+    value: "حرفه ایی",
     level: "حرفه ایی",
     price: 150,
     color: "blue",
@@ -59,21 +59,21 @@ export const pickAddons = [
     value: "onlineService",
     title: "سرویس آنلاین",
     subtitle: "دسترسی به بازی های چند نفره",
-    priceMonth: "1",
-    priceYear: "10",
+    priceMonth: 1,
+    priceYear: 10,
   },
   {
     value: "largerStorage",
     title: "فضای ذخیره سازی بیشتر",
     subtitle: "1 ترابایت اضافی برای ذخیره ابری",
-    priceMonth: "2",
-    priceYear: "20",
+    priceMonth: 2,
+    priceYear: 20,
   },
   {
     value: "customizeProfile",
     title: "پروفایل شخصی",
     subtitle: "تم شخصی برای پروفایل",
-    priceMonth: "2",
-    priceYear: "20",
+    priceMonth: 2,
+    priceYear: 20,
   },
 ];

@@ -32,7 +32,7 @@ import {
 const steps = ["اطلاعات شخصی", "انتخاب طرح", "افزونه ها", "مرحله نهایی"];
 
 const MainForm = () => {
-  const [activeStep, setActiveStep] = useState(2);
+  const [activeStep, setActiveStep] = useState(1);
   const [time, setTime] = useState(false);
 
   const handleNext = () => {
@@ -64,19 +64,16 @@ const MainForm = () => {
       handleNext();
     },
   });
-
   const formik3 = useFormik({
     initialValues: {
       onlineService: false,
-      largerStorage: true,
+      largerStorage: false,
       customizeProfile: false,
     },
     onSubmit: () => {
       handleNext();
     },
   });
-
-  console.log(formik3.values);
 
   const stepContent = (step) => {
     switch (step) {
@@ -92,10 +89,7 @@ const MainForm = () => {
   };
 
   return (
-    <Container
-      maxWidth="lg"
-
-    >
+    <Container maxWidth="lg">
       <Grid
         container
         my={5}
@@ -115,14 +109,14 @@ const MainForm = () => {
             height: "100%",
             backgroundImage: `url(${background})`,
             borderRadius: "20px",
-            display:"flex",
+            display: "flex",
             justifyContent: "center",
           }}
         >
           <Stepper
             activeStep={activeStep}
             orientation="vertical"
-            sx={{ width:"80%", height:"60%", marginTop: "40px" }}
+            sx={{ width: "80%", height: "60%", marginTop: "40px" }}
           >
             {steps.map((step, index) => (
               <Step key={index}>
@@ -168,7 +162,14 @@ const MainForm = () => {
                 <SelectPlan time={time} setTime={setTime} formik2={formik2} />
               )}
               {activeStep === 2 && <AddOns time={time} formik3={formik3} />}
-              {activeStep === 3 && <Summary />}
+              {activeStep === 3 && (
+                <Summary
+                  time={time}
+                  formik2={formik2}
+                  setActiveStep={setActiveStep}
+                  formik3={formik3}
+                />
+              )}
               {activeStep === 4 && <Thank />}
             </Box>
             {activeStep < steps.length && (
