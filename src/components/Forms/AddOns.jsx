@@ -57,6 +57,7 @@ const AddOns = ({ time, formik3 }) => {
                 border: "1px solid silver",
                 borderRadius: "10px",
                 marginBottom: "15px",
+                marginRight: "0",
               }}
             />
           ))}

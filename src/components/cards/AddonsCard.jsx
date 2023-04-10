@@ -7,13 +7,13 @@ const AddonsCard = ({ addons, time }) => {
       display="felx"
       alignItems="center"
       justifyContent="space-between"
-      sx={{ width: "400px", height: "65px" }}
+      sx={{ width: "32vw", height: "65px" }}
     >
-      <Box ml={1}>
+      <Box ml={1} sx={{width: "60%"}}>
         <Typography
           variant="body1"
           fontWeight={500}
-          sx={{ color: "hsl(213, 96%, 18%)" }}
+          sx={{ color: "hsl(213, 96%, 18%)"}}
         >
           {addons.title}
         </Typography>
@@ -25,13 +25,13 @@ const AddonsCard = ({ addons, time }) => {
           {addons.subtitle}
         </Typography>
       </Box>
-      <Box ml={10}>
+      <Box sx={{width: "40%", textAlign: "end"}} >
         {time ? (
-          <Typography variant="body2" sx={{ color: "hsl(229, 24%, 50%)" }}>
+          <Typography variant="body2" sx={{ color: "hsl(229, 24%, 50%)", paddingRight: "10px" }}>
             {addons.priceYear} {"تومان/سال"}
           </Typography>
         ) : (
-          <Typography variant="body2" sx={{ color: "hsl(229, 24%, 50%)" }}>
+          <Typography variant="body2" sx={{ color: "hsl(229, 24%, 50%)", paddingRight: "10px" }}>
             {addons.priceMonth} {"تومان/ماه"}
           </Typography>
         )}

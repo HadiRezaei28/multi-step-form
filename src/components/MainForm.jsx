@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   Container,
+  Grid,
   Step,
   StepLabel,
   Stepper,
@@ -75,8 +76,7 @@ const MainForm = () => {
     },
   });
 
-  console.log(formik3.values)
-
+  console.log(formik3.values);
 
   const stepContent = (step) => {
     switch (step) {
@@ -94,20 +94,12 @@ const MainForm = () => {
   return (
     <Container
       maxWidth="lg"
-      sx={{
-        height: "100vh",
-        width: "100vw",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "transparent",
-      }}
+
     >
-      <Box
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        // mx="auto"
+      <Grid
+        container
+        my={5}
+        mx="auto"
         sx={{
           height: "500px",
           width: "70%",
@@ -116,18 +108,21 @@ const MainForm = () => {
           padding: "15px",
         }}
       >
-        <Box
+        <Grid
+          item
+          xs={3}
           sx={{
-            width: "250px",
-            height: "500px",
+            height: "100%",
             backgroundImage: `url(${background})`,
             borderRadius: "20px",
+            display:"flex",
+            justifyContent: "center",
           }}
         >
           <Stepper
             activeStep={activeStep}
             orientation="vertical"
-            sx={{ paddingTop: "30px", paddingLeft: "30px" }}
+            sx={{ width:"80%", height:"60%", marginTop: "40px" }}
           >
             {steps.map((step, index) => (
               <Step key={index}>
@@ -153,8 +148,8 @@ const MainForm = () => {
               </Step>
             ))}
           </Stepper>
-        </Box>
-        <Box sx={{ width: "700px", height: "100%" }}>
+        </Grid>
+        <Grid item xs={9} sx={{ width: "700px", height: "100%" }}>
           <form
             onSubmit={stepContent(activeStep)}
             style={{
@@ -172,9 +167,7 @@ const MainForm = () => {
               {activeStep === 1 && (
                 <SelectPlan time={time} setTime={setTime} formik2={formik2} />
               )}
-              {activeStep === 2 && (
-                <AddOns time={time} formik3={formik3} />
-              )}
+              {activeStep === 2 && <AddOns time={time} formik3={formik3} />}
               {activeStep === 3 && <Summary />}
               {activeStep === 4 && <Thank />}
             </Box>
@@ -234,8 +227,8 @@ const MainForm = () => {
               </Box>
             )}
           </form>
-        </Box>
-      </Box>
+        </Grid>
+      </Grid>
     </Container>
   );
 };

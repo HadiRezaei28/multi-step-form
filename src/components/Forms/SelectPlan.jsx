@@ -8,6 +8,7 @@ import {
   Box,
   FormControl,
   FormControlLabel,
+  Grid,
   Radio,
   RadioGroup,
   Stack,
@@ -20,10 +21,8 @@ import { styled } from "@mui/material/styles";
 
 import { cardsMonthly, cardsYearly } from "../data/data";
 
-
-
 const BpIcon = styled("span")(({ theme }) => ({
-  width: 100,
+  width: 50,
   height: 3,
   boxShadow:
     "inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)",
@@ -88,7 +87,6 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const SelectPlan = ({ time, setTime, formik2 }) => {
-
   return (
     <Box>
       <Typography variant="h5" component="h5" sx={{ fontWeight: "600" }}>
@@ -101,7 +99,7 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
       >
         شما می توانید صورتحساب سالانه یا ماهانه داشته باشید
       </Typography>
-      <Box mt={5}>
+      <Grid container mt={5}>
         <FormControl sx={{ width: "100%" }}>
           <RadioGroup
             row
@@ -115,30 +113,32 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
           >
             {time === true
               ? cardsYearly.map((card, index) => (
-                  <FormControlLabel
-                    key={index}
-                    value={card.value}
-                    onChange={() =>
-                      formik2.setFieldValue("radioValue", `${card.value}`)
-                    }
-                    control={<BpRadio />}
-                    label={<SelectPlanCard card={card} time={time} />}
-                    labelPlacement="top"
-                    sx={{ margin: "0 0 0 0" }}
-                  />
+                  <Grid item xs={4} sx={{display:"flex", justifyContent: "center", alignItems: "center"}}>
+                    <FormControlLabel
+                      key={index}
+                      value={card.value}
+                      onChange={() =>
+                        formik2.setFieldValue("radioValue", `${card.value}`)
+                      }
+                      control={<BpRadio />}
+                      label={<SelectPlanCard card={card} time={time} />}
+                      labelPlacement="top"
+                    />
+                  </Grid>
                 ))
               : cardsMonthly.map((card, index) => (
-                  <FormControlLabel
-                    key={index}
-                    value={card.value}
-                    onChange={() =>
-                      formik2.setFieldValue("radioValue", `${card.value}`)
-                    }
-                    control={<BpRadio />}
-                    label={<SelectPlanCard card={card} time={time} />}
-                    labelPlacement="top"
-                    sx={{ margin: "0 0 0 0" }}
-                  />
+                  <Grid item xs={4} sx={{display:"flex", justifyContent: "center", alignItems: "center"}}>
+                    <FormControlLabel
+                      key={index}
+                      value={card.value}
+                      onChange={() =>
+                        formik2.setFieldValue("radioValue", `${card.value}`)
+                      }
+                      control={<BpRadio />}
+                      label={<SelectPlanCard card={card} time={time} />}
+                      labelPlacement="top"
+                    />
+                  </Grid>
                 ))}
             {formik2.errors.radioValue && (
               <Typography
@@ -152,7 +152,7 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
             )}
           </RadioGroup>
         </FormControl>
-      </Box>
+      </Grid>
       <Box
         mt={5}
         display="flex"
