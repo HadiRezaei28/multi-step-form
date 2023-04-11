@@ -89,17 +89,25 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
 const SelectPlan = ({ time, setTime, formik2 }) => {
   return (
     <Box>
-      <Typography variant="h5" component="h5" sx={{ fontWeight: "600" }}>
+      <Typography
+        variant="h5"
+        component="h5"
+        sx={{ fontWeight: "600", fontSize: { xs: "20px", sm: "24px" } }}
+      >
         طرح خود را انتخاب کنید
       </Typography>
       <Typography
         variant="body1"
         component="p"
-        sx={{ color: "hsl(231, 11%, 63%)", paddingTop: "5px" }}
+        sx={{
+          color: "hsl(231, 11%, 63%)",
+          paddingTop: "5px",
+          fontSize: { xs: "12px", sm: "16px" },
+        }}
       >
         شما می توانید صورتحساب سالانه یا ماهانه داشته باشید
       </Typography>
-      <Grid container mt={5}>
+      <Grid container sx={{ marginTop: { xs: 5, md: 5 } }}>
         <FormControl sx={{ width: "100%" }}>
           <RadioGroup
             row
@@ -113,7 +121,17 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
           >
             {time === true
               ? cardsYearly.map((card, index) => (
-                  <Grid item xs={4} key={index} sx={{display:"flex", justifyContent: "center", alignItems: "center"}}>
+                  <Grid
+                    item
+                    xs={6}
+                    sm={4}
+                    key={index}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
                     <FormControlLabel
                       value={card.value}
                       onChange={() =>
@@ -126,7 +144,17 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
                   </Grid>
                 ))
               : cardsMonthly.map((card, index) => (
-                  <Grid item xs={4} key={index} sx={{display:"flex", justifyContent: "center", alignItems: "center"}}>
+                  <Grid
+                    item
+                    xs={6}
+                    sm={4}
+                    key={index}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
                     <FormControlLabel
                       value={card.value}
                       onChange={() =>
@@ -152,23 +180,28 @@ const SelectPlan = ({ time, setTime, formik2 }) => {
         </FormControl>
       </Grid>
       <Box
-        mt={5}
         display="flex"
         justifyContent="center"
         sx={{
-          height: "45px",
+          height: { xs: "30px", sm: "45px" },
           bgcolor: "hsl(229, 24%, 92%)",
           borderRadius: "5px",
+          mb: { xs: 2 },
+          mt: { xs: 1, sm: 5 },
         }}
       >
         <Stack direction="row" spacing={3} alignItems="center">
-          <Typography>ماهانه</Typography>
+          <Typography sx={{ fontSize: { xs: "12px", sm: "16px" } }}>
+            ماهانه
+          </Typography>
           <AntSwitch
             checked={time}
             inputProps={{ "aria-label": "ant design" }}
             onClick={() => setTime(!time)}
           />
-          <Typography>سالانه</Typography>
+          <Typography sx={{ fontSize: { xs: "12px", sm: "16px" } }}>
+            سالانه
+          </Typography>
         </Stack>
       </Box>
     </Box>

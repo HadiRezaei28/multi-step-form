@@ -7,31 +7,32 @@ const AddonsCard = ({ addons, time }) => {
       display="felx"
       alignItems="center"
       justifyContent="space-between"
-      sx={{ width: "32vw", height: "65px" }}
+      py={1}
+      sx={{  width: "100%" }}
     >
-      <Box ml={1} sx={{width: "60%"}}>
+      <Box ml={1} sx={{width: "70%"}}>
         <Typography
           variant="body1"
           fontWeight={500}
-          sx={{ color: "hsl(213, 96%, 18%)"}}
+          sx={{ color: "hsl(213, 96%, 18%)", fontSize: {xs: "12px", sm: "16px"}}}
         >
           {addons.title}
         </Typography>
         <Typography
           variant="caption"
           fontWeight={500}
-          sx={{ color: "hsl(229, 24%, 50%)" }}
+          sx={{ color: "hsl(229, 24%, 50%)", fontSize: {xs: "8px", sm: "12px"} }}
         >
           {addons.subtitle}
         </Typography>
       </Box>
-      <Box sx={{width: "40%", textAlign: "end"}} >
+      <Box sx={{width: "30%", textAlign: "center"}} >
         {time ? (
-          <Typography variant="body2" sx={{ color: "hsl(229, 24%, 50%)", paddingRight: "10px" }}>
+          <Typography variant="body2" sx={{ color: "hsl(229, 24%, 50%)",fontSize: {xs: "10px", sm: "14px"} }}>
             {addons.priceYear} {"تومان/سال"}
           </Typography>
         ) : (
-          <Typography variant="body2" sx={{ color: "hsl(229, 24%, 50%)", paddingRight: "10px" }}>
+          <Typography variant="body2" sx={{ color: "hsl(229, 24%, 50%)",fontSize: {xs: "10px", sm: "14px"} }}>
             {addons.priceMonth} {"تومان/ماه"}
           </Typography>
         )}

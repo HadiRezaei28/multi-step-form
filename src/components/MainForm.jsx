@@ -32,7 +32,7 @@ import {
 const steps = ["اطلاعات شخصی", "انتخاب طرح", "افزونه ها", "مرحله نهایی"];
 
 const MainForm = () => {
-  const [activeStep, setActiveStep] = useState(3);
+  const [activeStep, setActiveStep] = useState(0);
   const [time, setTime] = useState(false);
 
   const handleNext = () => {
@@ -75,6 +75,8 @@ const MainForm = () => {
     },
   });
 
+  console.log(formik3.values)
+
   const stepContent = (step) => {
     switch (step) {
       case 0:
@@ -93,7 +95,7 @@ const MainForm = () => {
         my={5}
         mx="auto"
         sx={{
-          height: "500px",
+          height: "600px",
           width: "70%",
           background: "hsl(0, 0%, 100%)",
           borderRadius: "20px",
@@ -102,9 +104,10 @@ const MainForm = () => {
       >
         <Grid
           item
-          xs={3}
+          xs={12}
+          md={3}
           sx={{
-            height: "100%",
+            height: {xs: "10%", md: "100%"},
             backgroundImage: `url(${background})`,
             borderRadius: "20px",
             display: "flex",
@@ -114,7 +117,7 @@ const MainForm = () => {
           <Stepper
             activeStep={activeStep}
             orientation="vertical"
-            sx={{ width: "80%", height: "60%", marginTop: "40px" }}
+            sx={{ width: "80%", height: "60%", marginTop: "40px", display: {xs: "none", md:"flex"} }}
           >
             {steps.map((step, index) => (
               <Step key={index}>
@@ -140,8 +143,26 @@ const MainForm = () => {
               </Step>
             ))}
           </Stepper>
+          <Stepper
+            dir= "ltr"
+            activeStep={activeStep}
+            sx={{ width: "80%", height: "100%", display: {xs: "flex", md:"none"} }}
+          >
+            {steps.map((step, index) => (
+              <Step key={index}>
+                <StepLabel>
+                  
+                </StepLabel>
+              </Step>
+            ))}
+          </Stepper>
         </Grid>
-        <Grid item xs={9} sx={{ width: "700px", height: "100%" }}>
+        <Grid
+          item
+          xs={12}
+          md={9}
+          sx={{ width: "700px", height: {xs: "90%", md: "100%"} }}
+        >
           <form
             onSubmit={stepContent(activeStep)}
             style={{
@@ -188,6 +209,7 @@ const MainForm = () => {
                       "&:hover": {
                         backgroundColor: "hsl(200, 86%, 28%)",
                       },
+                      fontSize: {xs: "10px", sm: "14px"}
                     }}
                   >
                     تایید
@@ -202,6 +224,7 @@ const MainForm = () => {
                       "&:hover": {
                         backgroundColor: "hsl(200, 86%, 28%)",
                       },
+                      fontSize: {xs: "10px", sm: "14px"}
                     }}
                   >
                     مرحله بعد
@@ -218,6 +241,7 @@ const MainForm = () => {
                       "&:hover": {
                         backgroundColor: "hsl(200, 86%, 28%)",
                       },
+                      fontSize: {xs: "10px", sm: "14px"}
                     }}
                   >
                     مرحله قبل

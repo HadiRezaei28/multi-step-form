@@ -4,13 +4,21 @@ import { Box, TextField, Typography } from "@mui/material";
 const PersonalInfo = ({ formik1 }) => {
   return (
     <Box>
-      <Typography variant="h5" component="h5" sx={{ fontWeight: "600" }}>
+      <Typography
+        variant="h5"
+        component="h5"
+        sx={{ fontWeight: "600", fontSize: { xs: "20px", sm: "24px" } }}
+      >
         اطلاعات شخصی
       </Typography>
       <Typography
         variant="body1"
         component="p"
-        sx={{ color: "hsl(231, 11%, 63%)", paddingTop: "5px" }}
+        sx={{
+          color: "hsl(231, 11%, 63%)",
+          paddingTop: "5px",
+          fontSize: { xs: "12px", sm: "16px" },
+        }}
       >
         لطفا نام، ایمیل و شماره تلفن همراه خود را وراد کنید.
       </Typography>

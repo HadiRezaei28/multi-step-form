@@ -144,7 +144,7 @@ const Summary = ({ time, formik2, setActiveStep, formik3 }) => {
             <Typography
               variant="body1"
               fontWeight={500}
-              sx={{ color: "hsl(213, 96%, 18%)" }}
+              sx={{ color: "hsl(213, 96%, 18%)", fontSize: {xs: "14px", sm: "16px"} }}
             >
               {formik2.values.radioValue} {time ? "(سالانه)" : "(ماهانه)"}
             </Typography>
@@ -159,6 +159,7 @@ const Summary = ({ time, formik2, setActiveStep, formik3 }) => {
                 component="button"
                 variant="body2"
                 onClick={() => setActiveStep(1)}
+                sx={{fontSize: {xs: "12px", sm: "14px"}}}
               >
                 اصلاح
               </Link>
@@ -168,7 +169,7 @@ const Summary = ({ time, formik2, setActiveStep, formik3 }) => {
             <Typography
               variant="body1"
               fontWeight={500}
-              sx={{ color: "hsl(213, 96%, 18%)" }}
+              sx={{ color: "hsl(213, 96%, 18%)",fontSize: {xs: "12px", sm: "16px"} }}
             >
               {setPrice(time)} {time ? "تومان/سال" : "تومان/ماه"}
             </Typography>
@@ -189,7 +190,7 @@ const Summary = ({ time, formik2, setActiveStep, formik3 }) => {
                 <Box>
                   <Typography
                     variant="body2"
-                    sx={{ color: "hsl(229, 24%, 50%)", marginTop: "5px" }}
+                    sx={{ color: "hsl(229, 24%, 50%)", marginTop: "5px", fontSize: {xs: "10px", sm: "14px"} }}
                   >
                     {addons.title}
                   </Typography>
@@ -198,7 +199,7 @@ const Summary = ({ time, formik2, setActiveStep, formik3 }) => {
                   <Typography
                     variant="body2"
                     fontWeight={300}
-                    sx={{ color: "hsl(213, 96%, 18%)" }}
+                    sx={{ color: "hsl(213, 96%, 18%)",fontSize: {xs: "10px", sm: "14px"} }}
                   >
                     {time ? addons.priceYear : addons.priceMonth}{" "}
                     {time ? "تومان/سال" : "تومان/ماه"}
@@ -218,7 +219,7 @@ const Summary = ({ time, formik2, setActiveStep, formik3 }) => {
         <Box>
           <Typography
             variant="body2"
-            sx={{ color: "hsl(229, 24%, 50%)"}}
+            sx={{ color: "hsl(229, 24%, 50%)", fontSize: {xs: "10px", sm: "14px"}}}
           >
             {"مجموع"} {time ? "(سالانه)" : "(ماهانه)"}
           </Typography>
@@ -227,7 +228,7 @@ const Summary = ({ time, formik2, setActiveStep, formik3 }) => {
           <Typography
             variant="body1"
             fontWeight={700}
-            sx={{ color: "hsl(243, 100%, 62%)" }}
+            sx={{ color: "hsl(243, 100%, 62%)", fontSize: {xs: "12px", sm: "16px"} }}
           >
             {totalcost(time)} {time ? "تومان/سال" : "تومان/ماه"}
           </Typography>
